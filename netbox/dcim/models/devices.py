@@ -602,6 +602,11 @@ class Device(PrimaryModel, ConfigContextModel):
         object_id_field='assigned_object_id',
         related_query_name='device'
     )
+    fabric = models.ForeignKey(
+        to='netbox_ix_plugin.Fabric',
+        on_delete=models.PROTECT,
+        related_name='devices'
+    )
 
     objects = ConfigContextModelQuerySet.as_manager()
 
