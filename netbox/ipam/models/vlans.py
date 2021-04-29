@@ -154,6 +154,11 @@ class VLAN(PrimaryModel):
         max_length=200,
         blank=True
     )
+    fabric = models.ForeignKey(
+        to='netbox_ix_plugin.Fabric',
+        on_delete=models.PROTECT,
+        related_name='vlans'
+    )
 
     objects = VLANQuerySet.as_manager()
 
